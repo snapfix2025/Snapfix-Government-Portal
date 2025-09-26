@@ -1,12 +1,15 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
 import json
 import os
 from datetime import datetime
+from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for frontend communication
-
+CORS(
+    app,
+    resources={r"/api/*": {"origins": "https://snapfix-government-portal.onrender.com"}},
+    supports_credentials=True
+)
 # In-memory storage for simplicity (in production, use a database)
 todos = []
 next_id = 1
