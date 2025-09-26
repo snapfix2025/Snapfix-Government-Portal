@@ -4,7 +4,11 @@ import TodoForm from './components/TodoForm'
 import TodoList from './components/TodoList'
 import TodoStats from './components/TodoStats'
 
-const API_BASE_URL = 'http://localhost:5000/api'
+import { API, API_BASE_URL } from "./config";
+
+// Optional: quick health check
+fetch(`${API}/api/health`).then(r => r.json()).then(console.log);
+
 
 function App() {
   const [todos, setTodos] = useState([])
